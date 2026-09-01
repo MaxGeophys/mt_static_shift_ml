@@ -6,4 +6,5 @@ models/*.joblib
 outputs/*
 !outputs/.gitkeep
 .pytest_cache/
-visualization/
+visualization/*
+!visualization/examples/

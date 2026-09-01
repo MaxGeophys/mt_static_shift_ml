@@ -284,6 +284,36 @@ replace metric comparison. Here, it is used as a technical check that
 individual parts of the code continue to work consistently after
 changes.
 
+## Example results
+
+The overall metrics for effective apparent resistivity `Rho`
+on the "Graben" test geoelectric model are:
+
+| Method | RMSE | MAE | R² | MAPE |
+|---|---:|---:|---:|---:|
+| Model with near-surface inhomogeneities | 96.90 | 39.20 | 0.065 | 43.69% |
+| Spatial filtering | 38.60 | 22.66 | 0.852 | 31.70% |
+| Gradient boosting | **23.58** | **10.77** | **0.945** | **12.47%** |
+
+Gradient boosting provides the best results across all reported metrics:
+RMSE decreases from 96.90 Ohm·m for the original distorted data to
+23.58 Ohm·m after normalization.
+
+The figure below shows an example of spatial normalization of effective
+apparent resistivity at T = 200 s.
+
+![Comparison of Rho normalization methods at T = 200 s](visualization/examples/Rho_T_200s.png)
+
+The panels show:
+- **a** — reference model with a homogeneous near-surface layer;
+- **b** — model with multiple near-surface inhomogeneities;
+- **c** — spatial filtering result;
+- **d** — gradient boosting result.
+
+At T = 200 s, the RMSE of the original distorted data is 192 Ohm·m.
+Spatial filtering reduces the RMSE to 75.93 Ohm·m, while gradient
+boosting reduces it to 46.93 Ohm·m.
+
 ## Full pipeline
 
 ``` text
