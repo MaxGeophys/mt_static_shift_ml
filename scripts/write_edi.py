@@ -89,7 +89,7 @@ def write_values(
     *,
     float_format: str = "13.6g",
 ) -> None:
-    """Write an EDI numeric block using the layout produced by MTDA/MATLAB."""
+
 
     for start in range(0, len(values), per_line):
         chunk = values[start:start + per_line]
@@ -113,7 +113,7 @@ def write_frequency_section(
     file,
     frequencies: np.ndarray,
 ) -> None:
-    """Write the SEG EDI frequency header exactly as in the MATLAB reference files."""
+
 
     frequencies = np.asarray(frequencies, dtype=float)
     file.write(f">FREQ NFREQ={len(frequencies)} // {len(frequencies)}\n")
@@ -181,7 +181,7 @@ def geographic_coordinates(
 
 
 def coordinate_name(value: float) -> str:
-    """Format a model coordinate exactly like scripts/write_txt.py."""
+
 
     value = float(value)
     if value.is_integer():
@@ -346,9 +346,7 @@ def write_edi(
 
 
 
-        # MTDA uses the dominant off-diagonal impedance to estimate the
-        # variance of each electric-field row: Zxx/Zxy -> |Zxy|/1600,
-        # Zyx/Zyy -> |Zyx|/1600.  This matches the MATLAB reference EDI files.
+
         variance_source = {
             "Zxx": "Zxy",
             "Zxy": "Zxy",

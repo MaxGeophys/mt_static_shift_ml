@@ -140,9 +140,7 @@ def write_curves(data: pd.DataFrame) -> int:
     for (x, y), site in data.groupby(["X", "Y"], sort=True):
         site = site.sort_values("T").copy()
 
-        # RMSE in a curve file describes the whole curve at this (X, Y) site,
-        # not a map slice at one period. Keep one value per RMSE column so it
-        # is not repeated for every period in the exported file.
+
         curve_rmse = {
             "RMSE_Rho_anomal": root_mean_squared_error(site["Rho_hmg"], site["Rho_anomal"]),
             "RMSE_Rho_filtered": root_mean_squared_error(site["Rho_hmg"], site["Rho_filtered"]),

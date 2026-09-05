@@ -31,13 +31,7 @@ def exponential_spatial_weights(
     half_width_steps: float,
     steepness: float,
 ) -> np.ndarray:
-    """Build the spatial weights W = exp(-(|R| / R0) ** q).
 
-    Distances are expressed in observation-grid steps. The neighbourhood is
-    square: radius_steps=1 produces a 3x3 window. Euclidean distance is used
-    only for the weight itself, so orthogonal neighbours have R=1 and diagonal
-    neighbours have R=sqrt(2).
-    """
     if radius_steps < 0:
         raise ValueError("radius_steps must be >= 0")
     if half_width_steps <= 0:
@@ -70,9 +64,7 @@ def _calculate_filter_coefficient(
     window_size = 2 * radius_steps + 1
     filtered_data = np.full(data_pivot.shape, np.nan, dtype=float)
 
-    # Preserve the original behaviour at the grid boundary: only points with a
-    # complete neighbourhood are filtered here. Boundary values are filled from
-    # the local-mean fallback later in the pipeline.
+
     for i in range(radius_steps, rows - radius_steps):
         for j in range(radius_steps, cols - radius_steps):
             row_slice = slice(i - radius_steps, i + radius_steps + 1)

@@ -60,8 +60,7 @@ def test_ml_feature_radius_is_independent_from_spatial_filter_radius():
     ]
     before = prepared[ml_feature_columns].copy()
 
-    # Changing only the baseline filter radius must not mutate/recalculate
-    # the ML feature table.
+
     _ = spatial_filter(
         prepared,
         filter_period=100.0,
