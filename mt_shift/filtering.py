@@ -91,8 +91,6 @@ def _calculate_filter_coefficient(
             if weight_sum == 0 or not np.isfinite(weight_sum):
                 continue
 
-            # Weighted geometric mean. This preserves the multiplicative
-            # filtering logic used by the original implementation.
             normalized_weights = weights / weight_sum
             filtered_value = np.exp(np.sum(normalized_weights[valid] * np.log(values[valid])))
             filtered_data[i, j] = filtered_value
@@ -168,7 +166,6 @@ def spatial_filter(
     wa_zxy = _pivot_xy(data_period, "WA_Zxy")
     wa_zyx = _pivot_xy(data_period, "WA_Zyx")
 
-    # This is the pre-existing additional weight based on the tensor geometry.
     wd = _pivot_xy(data_period, "WD")
 
     filter_kwargs = {
