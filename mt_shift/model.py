@@ -19,7 +19,7 @@ XGB_RHO_PARAMS = {
 }
 
 RHO_FEATURES = [
-    "Rho_mean_attitude",
+    "Rho_mean_ratio",
     "Rho",
     "absZxy",
     "imagZxy",
@@ -38,7 +38,7 @@ XGB_Z_MAIN_PARAMS = {
 }
 
 Zxy_FEATURES = [
-    "Zxy_mean_attitude",
+    "Zxy_mean_ratio",
     "Rho",
     "absZxy",
     "absZxx",
@@ -47,7 +47,7 @@ Zxy_FEATURES = [
 ]
 
 Zyx_FEATURES = [
-    "Zyx_mean_attitude",
+    "Zyx_mean_ratio",
     "Rho",
     "absZyx",
     "absZyy",
@@ -68,7 +68,7 @@ XGB_Z_ADD_PARAMS = {
 }
 
 Zxx_FEATURES = [
-    "Zxx_mean_attitude",
+    "Zxx_mean_ratio",
     "absZxx",
     "imagZxx",
     "Kxy_predicted",
@@ -76,7 +76,7 @@ Zxx_FEATURES = [
 ]
 
 Zyy_FEATURES = [
-    "Zyy_mean_attitude",
+    "Zyy_mean_ratio",
     "absZyy",
     "imagZyy",
     "Kyx_predicted",

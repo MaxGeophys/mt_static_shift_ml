@@ -113,14 +113,14 @@ trained to predict the distortion magnitude required for subsequent data
 normalization.
 
 The features used to train the effective apparent resistivity regressor
-are: `Rho_mean_attitude` --- the ratio of the value at a given point to
+are: `Rho_mean_ratio` --- the ratio of the value at a given point to
 the mean value within a moving 3×3 window; `Rho` --- effective apparent
 resistivity at the point; `absZxy` --- magnitude of the main impedance
 tensor component; `imagZxy` --- imaginary part of the main impedance
 tensor component.
 
 Similar features are used for the main impedance tensor components. For
-example, for `Zyx` these are `Zyx_mean_attitude`, `Rho`, `absZyx`,
+example, for `Zyx` these are `Zyx_mean_ratio`, `Rho`, `absZyx`,
 `absZyy`, `imagZyx`, as well as `AlphaEgg2` --- the difference between
 the principal strike directions of the regional structure determined
 using the Eggers method (which is not resistant to near-surface
@@ -128,7 +128,7 @@ inhomogeneities) and the phase tensor method (which, conversely, is not
 affected by near-surface distortions).
 
 For the additional impedance tensor components, using `Zxx` as an
-example, the features are `Zxx_mean_attitude`, `absZxx`, `imagZxx`,
+example, the features are `Zxx_mean_ratio`, `absZxx`, `imagZxx`,
 `AlphaEgg2`, as well as `Kxy_predicted` --- the shift coefficient
 determined for the corresponding main component.
 

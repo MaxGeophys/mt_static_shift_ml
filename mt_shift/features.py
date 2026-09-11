@@ -196,18 +196,18 @@ def add_spatial_features(
 
     df = df.merge(spatial_means)
 
-    df["Rho_mean_attitude"] = df["Rho"] / df["Rho_mean"]
-    df["Zxx_mean_attitude"] = df["absZxx"] / df["Zxx_mean"]
-    df["Zxy_mean_attitude"] = df["absZxy"] / df["Zxy_mean"]
-    df["Zyx_mean_attitude"] = df["absZyx"] / df["Zyx_mean"]
-    df["Zyy_mean_attitude"] = df["absZyy"] / df["Zyy_mean"]
+    df["Rho_mean_ratio"] = df["Rho"] / df["Rho_mean"]
+    df["Zxx_mean_ratio"] = df["absZxx"] / df["Zxx_mean"]
+    df["Zxy_mean_ratio"] = df["absZxy"] / df["Zxy_mean"]
+    df["Zyx_mean_ratio"] = df["absZyx"] / df["Zyx_mean"]
+    df["Zyy_mean_ratio"] = df["absZyy"] / df["Zyy_mean"]
 
 
     df["lgRho"] = np.log10(df["Rho"])
     df["lgRho_mean"] = np.log10(df["Rho_mean"])
-    df["WA"] = df["Rho_mean_attitude"].apply(lambda x: 1 / x if x > 1 else x)
-    df["WA_Zxy"] = df["Zxy_mean_attitude"].apply(lambda x: 1 / x if x > 1 else x)
-    df["WA_Zyx"] = df["Zyx_mean_attitude"].apply(lambda x: 1 / x if x > 1 else x)
+    df["WA"] = df["Rho_mean_ratio"].apply(lambda x: 1 / x if x > 1 else x)
+    df["WA_Zxy"] = df["Zxy_mean_ratio"].apply(lambda x: 1 / x if x > 1 else x)
+    df["WA_Zyx"] = df["Zyx_mean_ratio"].apply(lambda x: 1 / x if x > 1 else x)
     df["WD"] = (45 - df["AlphaEgg1"]) / 45
 
     return df

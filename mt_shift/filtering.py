@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 
-def _pivot_xy(
+def pivot_xy(
     data: pd.DataFrame,
     value_column: str,
 ) -> pd.DataFrame:
@@ -15,7 +15,7 @@ def _pivot_xy(
     )
 
 
-def _pivot_ty(
+def pivot_ty(
     data: pd.DataFrame,
     value_column: str,
 ) -> pd.DataFrame:
@@ -137,17 +137,17 @@ def spatial_filter(
     half_width_steps: float = 1.0,
     steepness: float = 3.0,
 ) -> pd.DataFrame:
-    rho = _pivot_ty(data, "Rho")
-    zxx = _pivot_ty(data, "absZxx")
-    zxy = _pivot_ty(data, "absZxy")
-    zyx = _pivot_ty(data, "absZyx")
-    zyy = _pivot_ty(data, "absZyy")
+    rho = pivot_ty(data, "Rho")
+    zxx = pivot_ty(data, "absZxx")
+    zxy = pivot_ty(data, "absZxy")
+    zyx = pivot_ty(data, "absZyx")
+    zyy = pivot_ty(data, "absZyy")
 
-    rho_mean = _pivot_ty(data, "Rho_mean")
-    zxx_mean = _pivot_ty(data, "Zxx_mean")
-    zxy_mean = _pivot_ty(data, "Zxy_mean")
-    zyx_mean = _pivot_ty(data, "Zyx_mean")
-    zyy_mean = _pivot_ty(data, "Zyy_mean")
+    rho_mean = pivot_ty(data, "Rho_mean")
+    zxx_mean = pivot_ty(data, "Zxx_mean")
+    zxy_mean = pivot_ty(data, "Zxy_mean")
+    zyx_mean = pivot_ty(data, "Zyx_mean")
+    zyy_mean = pivot_ty(data, "Zyy_mean")
 
     data_period = data[data["T"] == filter_period]
 
@@ -158,15 +158,15 @@ def spatial_filter(
             f"Available periods: {available_periods}"
         )
 
-    rho_period = _pivot_xy(data_period, "Rho")
-    zxy_period = _pivot_xy(data_period, "absZxy")
-    zyx_period = _pivot_xy(data_period, "absZyx")
+    rho_period = pivot_xy(data_period, "Rho")
+    zxy_period = pivot_xy(data_period, "absZxy")
+    zyx_period = pivot_xy(data_period, "absZyx")
 
-    wa_rho = _pivot_xy(data_period, "WA")
-    wa_zxy = _pivot_xy(data_period, "WA_Zxy")
-    wa_zyx = _pivot_xy(data_period, "WA_Zyx")
+    wa_rho = pivot_xy(data_period, "WA")
+    wa_zxy = pivot_xy(data_period, "WA_Zxy")
+    wa_zyx = pivot_xy(data_period, "WA_Zyx")
 
-    wd = _pivot_xy(data_period, "WD")
+    wd = pivot_xy(data_period, "WD")
 
     filter_kwargs = {
         "radius_steps": radius_steps,
